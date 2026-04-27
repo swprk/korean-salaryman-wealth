@@ -174,7 +174,7 @@ $ python scripts/refund_calculator.py --gain 1200
 
 ### Claude.ai (가장 간단)
 
-1. [Releases](https://github.com/YOUR_USERNAME/korean-salaryman-wealth/releases)에서 `korean-salaryman-wealth.skill` 다운로드
+1. [Releases](https://github.com/swprk/korean-salaryman-wealth/releases)에서 `korean-salaryman-wealth.skill` 다운로드
 2. 좌측 사이드바 → **Settings** → **Capabilities** (또는 **Skills**)
 3. **Upload skill** → 다운로드한 파일 선택
 4. 활성화 토글 ON
@@ -188,7 +188,7 @@ $ python scripts/refund_calculator.py --gain 1200
 ```bash
 mkdir -p ~/.claude/skills
 cd ~/.claude/skills
-git clone https://github.com/YOUR_USERNAME/korean-salaryman-wealth.git
+git clone https://github.com/swprk/korean-salaryman-wealth.git
 ```
 
 ---
@@ -286,8 +286,8 @@ korean-salaryman-wealth/
 
 세제 변경, 새 제도 도입, 잘못된 정보 발견 등 모든 contribution을 환영합니다.
 
-- 잘못된 수치 정정 → [Issue 등록](https://github.com/YOUR_USERNAME/korean-salaryman-wealth/issues/new?template=correction.md) (공식 출처 링크 필수)
-- 새 영역 제안 → [Issue 등록](https://github.com/YOUR_USERNAME/korean-salaryman-wealth/issues/new?template=feature.md)
+- 잘못된 수치 정정 → [Issue 등록](https://github.com/swprk/korean-salaryman-wealth/issues/new?template=correction.md) (공식 출처 링크 필수)
+- 새 영역 제안 → [Issue 등록](https://github.com/swprk/korean-salaryman-wealth/issues/new?template=feature.md)
 - 직접 수정 → [CONTRIBUTING.md](CONTRIBUTING.md) 참고
 
 세부 변경 사항은 [CHANGELOG.md](CHANGELOG.md)에서 확인하세요.
