@@ -11,7 +11,7 @@
   "plugins": [
     {
       "name": "korean-salaryman-wealth",
-      "source": ".",
+      "source": "./plugins/korean-salaryman-wealth",
       "description": "한국 직장인을 위한 절세·자산관리 Claude Skill. ISA·연금저축·IRP 절세계좌 우선순위, 해외 ETF 세금 처리, DC형 퇴직연금 운용, 청년 특화 제도(만 34세 이하), 은퇴 임박기 연금 인출 전략까지 통합 안내합니다. 모든 수치는 국세청·금융위원회·금감원 등 공식 출처로 검증되었습니다.",
       "version": "1.0.0",
       "author": {

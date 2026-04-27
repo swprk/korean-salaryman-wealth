@@ -229,10 +229,12 @@ $ python scripts/refund_calculator.py --gain 1200
 ### 방법 3. Git Clone (개발자 · 직접 수정 의도)
 
 ```bash
+git clone https://github.com/swprk/korean-salaryman-wealth.git /tmp/ksw
 mkdir -p ~/.claude/skills
-cd ~/.claude/skills
-git clone https://github.com/swprk/korean-salaryman-wealth.git
+cp -r /tmp/ksw/plugins/korean-salaryman-wealth/skills/korean-salaryman-wealth ~/.claude/skills/
 ```
+
+(스킬 본체는 `plugins/korean-salaryman-wealth/skills/korean-salaryman-wealth/`에 있습니다.)
 
 ### 설치 확인 — 첫 질문 던져보기
 
@@ -282,24 +284,29 @@ git clone https://github.com/swprk/korean-salaryman-wealth.git
 ## 파일 구성
 
 ```
-korean-salaryman-wealth/
-├── .claude-plugin/                   # Plugin Marketplace 메타데이터
-│   ├── marketplace.json              # 마켓플레이스 카탈로그
-│   └── plugin.json                   # 플러그인 매니페스트
-├── SKILL.md                          # 메인 스킬 정의
-├── README.md                         # 이 파일
-├── LICENSE                           # MIT License
-├── CHANGELOG.md                      # 버전별 변경 이력
-├── CONTRIBUTING.md                   # 기여 가이드
-├── references/                       # 깊이 있는 주제별 가이드
-│   ├── tax-accounts.md               # ISA·연금저축·IRP·DC형 세부
-│   ├── overseas-investing.md         # 해외주식·ETF 세금 가이드
-│   ├── asset-allocation.md           # 연령대별 자산배분 + 인출 전략
-│   ├── youth-programs.md             # 청년형 ISA·청년미래적금·청년주택드림
-│   ├── marriage-housing.md           # 신혼부부 특별공급·정책 대출
-│   └── securities-firms.md           # 한국 주요 증권사 비교
-└── scripts/
-    └── refund_calculator.py          # 자동 환급/세금 계산기
+korean-salaryman-wealth/                      # 저장소 = Plugin Marketplace
+├── .claude-plugin/
+│   └── marketplace.json                      # 마켓플레이스 카탈로그
+├── plugins/
+│   └── korean-salaryman-wealth/              # 플러그인 루트
+│       ├── .claude-plugin/
+│       │   └── plugin.json                   # 플러그인 매니페스트
+│       └── skills/
+│           └── korean-salaryman-wealth/      # 스킬 루트
+│               ├── SKILL.md                  # 메인 스킬 정의
+│               ├── references/               # 깊이 있는 주제별 가이드
+│               │   ├── tax-accounts.md       # ISA·연금저축·IRP·DC형 세부
+│               │   ├── overseas-investing.md # 해외주식·ETF 세금 가이드
+│               │   ├── asset-allocation.md   # 연령대별 자산배분 + 인출 전략
+│               │   ├── youth-programs.md     # 청년형 ISA·청년미래적금·청년주택드림
+│               │   ├── marriage-housing.md   # 신혼부부 특별공급·정책 대출
+│               │   └── securities-firms.md   # 한국 주요 증권사 비교
+│               └── scripts/
+│                   └── refund_calculator.py  # 자동 환급/세금 계산기
+├── README.md                                 # 이 파일
+├── LICENSE                                   # MIT License
+├── CHANGELOG.md                              # 버전별 변경 이력
+└── CONTRIBUTING.md                           # 기여 가이드
 ```
 
 진입은 SKILL.md만 보면 되고, 깊이 들어갈 때 references를 참조하는 **Progressive Disclosure** 구조입니다.
