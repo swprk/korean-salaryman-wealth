@@ -203,24 +203,58 @@ $ python scripts/refund_calculator.py --gain 1200
 
 ## 설치 방법
 
-### Claude.ai
+사용 환경에 따라 세 가지 방법이 있습니다. 가장 마찰이 적은 방법부터 순서대로 안내합니다.
+
+### 방법 1. Plugin Marketplace 등록 (권장 — Claude Code · Cowork)
+
+한 줄 명령어로 등록 → 한 줄 명령어로 설치.
+
+```bash
+# 1. 마켓플레이스 등록 (한 번만)
+/plugin marketplace add swprk/korean-salaryman-wealth
+
+# 2. 스킬 설치
+/plugin install korean-salaryman-wealth@korean-salaryman-wealth
+```
+
+업데이트 시 `/plugin marketplace update korean-salaryman-wealth`로 최신 버전을 받을 수 있습니다.
+
+### 방법 2. `.skill` 파일 업로드 (Claude.ai 웹)
 
 1. [Releases](https://github.com/swprk/korean-salaryman-wealth/releases)에서 `korean-salaryman-wealth.skill` 다운로드
-2. 좌측 사이드바 → **Settings** → **Capabilities** (또는 **Skills**)
+2. Claude.ai 좌측 사이드바 → **Settings** → **Capabilities**
 3. **Upload skill** → 다운로드한 파일 선택
 4. 활성화 토글 ON
 
-설치 후 바로 이런 질문을 던져보세요:
-
-> *"30대 직장인이고 연봉 4,800만원이에요. 회사 DC형 퇴직연금 한 번도 운용 안 했고, 미국 ETF 좀 사보려고 하는데 뭐부터 해야 할까요?"*
-
-### Claude Code
+### 방법 3. Git Clone (개발자 · 직접 수정 의도)
 
 ```bash
 mkdir -p ~/.claude/skills
 cd ~/.claude/skills
 git clone https://github.com/swprk/korean-salaryman-wealth.git
 ```
+
+### 설치 확인 — 첫 질문 던져보기
+
+설치 후 다음 질문을 복사해 입력하면 정상 작동 여부를 즉시 확인할 수 있습니다.
+
+```
+30대 직장인이고 연봉 4,800만원이에요.
+회사 DC형 퇴직연금은 한 번도 운용 안 했고, 미국 ETF 좀 사보려고 합니다.
+뭐부터 해야 할까요?
+```
+
+답변에 **"5,500만원 이하 → 16.5% 공제"**, **"DC형 퇴직연금 점검"**, **"청년형 ISA"** 같은 키워드가 등장하면 스킬이 정상 활성화된 것입니다.
+
+### 설치가 안 될 때
+
+| 증상 | 원인 / 해결 |
+|---|---|
+| `/plugin marketplace add`가 인식 안 됨 | Claude Code 최신 버전(2026년 4월 이후) 필요. `claude --version` 확인 후 업데이트 |
+| `.skill` 파일 업로드 시 형식 오류 | Releases에서 `.zip`이 아닌 `.skill` 확장자 파일을 받아야 함 |
+| Settings 메뉴에 "Skills" 항목이 없음 | 계정의 Capabilities 권한 미활성. Anthropic 지원 페이지 참조 |
+| 설치 후 한국어 자산관리 질문에 일반론만 답함 | 스킬이 비활성. Settings에서 토글 ON 확인 후 새 대화 시작 |
+| Plugin이 검증 실패 | 로컬에서 `/plugin validate` 실행 후 로그 확인 |
 
 ---
 
@@ -249,6 +283,9 @@ git clone https://github.com/swprk/korean-salaryman-wealth.git
 
 ```
 korean-salaryman-wealth/
+├── .claude-plugin/                   # Plugin Marketplace 메타데이터
+│   ├── marketplace.json              # 마켓플레이스 카탈로그
+│   └── plugin.json                   # 플러그인 매니페스트
 ├── SKILL.md                          # 메인 스킬 정의
 ├── README.md                         # 이 파일
 ├── LICENSE                           # MIT License
